@@ -17,6 +17,8 @@ import {
   Users
 } from 'lucide-react';
 
+const CHECKOUT_URL = "https://pay.kiwify.com.br/SykVrzJ?afid=1gMqmYXp";
+
 // --- Componente de Animação ---
 const FadeIn: React.FC<{ children: React.ReactNode; delay?: number; direction?: 'up' | 'down' | 'none'; className?: string }> = ({ children, delay = 0, direction = 'up', className = "" }) => {
   const ref = useRef(null);
@@ -80,10 +82,13 @@ const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, ans
 // --- Purchase Button with Social Proof ---
 const BuyButton: React.FC<{ className?: string }> = ({ className = "" }) => (
   <div className="flex flex-col items-center gap-3 w-full max-w-md mx-auto">
-    <button className={`group relative bg-white text-black w-full py-6 rounded-full font-black text-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_50px_rgba(255,255,255,0.1)] ${className}`}>
+    <a 
+      href={CHECKOUT_URL}
+      className={`group relative bg-white text-black w-full py-6 rounded-full font-black text-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center ${className}`}
+    >
       QUERO MEU ACESSO AGORA
       <ArrowRight className="inline-block ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
-    </button>
+    </a>
     <div className="flex items-center gap-2 text-green-500/80 animate-pulse">
       <Users className="w-3 h-3" />
       <span className="text-[10px] uppercase tracking-[0.2em] font-bold">70 homens já compraram nas últimas 24h</span>
@@ -316,6 +321,41 @@ const App: React.FC = () => {
               <FAQItem question="Quando vou receber o Longer Method?" answer="O acesso é instantâneo. Assim que o pagamento é aprovado, o link de acesso é enviado ao seu e-mail." />
               <FAQItem question="Quais são os benefícios do Longer Method?" answer="Controle total do tempo, ereções mais firmes, fim da ansiedade de performance e maior autoconfiança." />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Seção de Privacidade/Conversão --- */}
+      <section className="py-32 border-t border-white/5 bg-black">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <FadeIn className="flex-1">
+              <h2 className="text-3xl font-serif text-white mb-6 italic">Privacidade Total e Discrição</h2>
+              <p className="text-neutral-400 leading-relaxed mb-8 font-light">
+                Sabemos da importância da sua privacidade. O acesso ao Longer Method é 100% digital, anônimo e seguro. Nenhuma informação sensível aparecerá em sua fatura ou será compartilhada.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-sm text-neutral-300">
+                  <Lock className="w-4 h-4 text-green-500" /> Criptografia de Ponta a Ponta
+                </div>
+                <div className="flex items-center gap-3 text-sm text-neutral-300">
+                  <EyeOff className="w-4 h-4 text-green-500" /> Acesso 100% Anônimo
+                </div>
+                <div className="flex items-center gap-3 text-sm text-neutral-300">
+                  <ShieldCheck className="w-4 h-4 text-green-500" /> Garantia de Segurança Digital
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2} className="flex-1 w-full">
+               <div className="bg-gradient-to-br from-neutral-900 to-black p-12 rounded-[3rem] border border-white/10 text-center shadow-2xl flex flex-col items-center">
+                 <Shield className="w-16 h-16 text-green-500/20 mx-auto mb-8 stroke-1" />
+                 <h4 className="text-xl font-serif text-white mb-4">Escolha com Confiança</h4>
+                 <p className="text-neutral-500 text-sm leading-relaxed mb-8">
+                   Sua transformação começa com uma decisão discreta hoje. Recupere o controle que você sempre desejou.
+                 </p>
+                 <BuyButton />
+               </div>
+            </FadeIn>
           </div>
         </div>
       </section>
