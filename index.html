@@ -95,7 +95,16 @@ fbq('track', 'PageView');
     fbq('track', 'ViewContent');
   </script>
   
-  
+   <script>
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest(
+        'a[href*="kiwify"], a[href*="hotmart"], a[href*="eduzz"]'
+      );
+      if (link) {
+        fbq('track', 'AddToCart');
+      }
+    });
+  </script>
   
   </body>
 </html>
